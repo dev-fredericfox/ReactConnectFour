@@ -1,39 +1,48 @@
-import { useState, useEffect } from "react";
-import Cell from './Cell'
-
+import { useState, useEffect, useLayoutEffect } from "react";
+import Cell from "./Cell";
 
 function Game() {
   const [gameBoard, setGameBoard] = useState([]);
-  const [turn, setTurn] = useState('X');
+  const [turn, setTurn] = useState("X");
 
   useEffect(() => {
     //Populate rows
     resetGame();
   }, []);
 
-  useEffect(() => {
-    //Populate rows
-    function checkHorizontalScore() {
-      gameBoard.forEach(row => {
-        if (row.includes('XXXX')){
-          window.alert('X Wins!')
+  useLayoutEffect(() => {
+    function checkScore(score) {
+      score.forEach((row) => {
+        if (row.includes("XXXX")) {
+          window.alert("X Wins!");
         }
-        if (row.includes('OOOO')){
-          window.alert('O Wins!')
+        if (row.includes("OOOO")) {
+          window.alert("O Wins!");
         }
-      })
+      });
     }
-    console.log("Game Board useEffect")
-    checkHorizontalScore()
+
+    function rotateGameBorad90deg() {
+      const verticalGameBoard = [];
+      for (let i = 0; i <= 6; i++) {
+        const verticalRow = [];
+        for (let j = 0; j <= 5; j++) {
+          verticalRow.push(gameBoard[j][i]);
+        }
+        verticalGameBoard.push(verticalRow.join(""));
+      }
+      return verticalGameBoard
+    }
+    if (gameBoard[0]) {
+      checkScore(gameBoard);
+      checkScore(rotateGameBorad90deg());
+    }
   }, [gameBoard]);
 
-
-
   function changeTurn() {
-    if (turn === 'X')
-    setTurn(() => 'O' )
+    if (turn === "X") setTurn(() => "O");
     else {
-      setTurn(() => 'X')
+      setTurn(() => "X");
     }
   }
 
@@ -48,7 +57,7 @@ function Game() {
         gameBoardCopy[i] = row.join("");
         console.log(gameBoardCopy);
         setGameBoard((original) => [...gameBoardCopy]);
-        changeTurn()
+        changeTurn();
         break;
       }
       // Add throwing some sort of error if col > 7 (index 6)
@@ -71,7 +80,13 @@ function Game() {
         return (
           <div className="flex" key={index}>
             {rowToCell.map((cell, column) => (
-              <Cell cellStatus={cell} setCoin={setCoin} column={column} key={cell+''+column} turn={turn}/>
+              <Cell
+                cellStatus={cell}
+                setCoin={setCoin}
+                column={column}
+                key={cell + "" + column}
+                turn={turn}
+              />
             ))}
           </div>
         );
