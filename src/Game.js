@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from "react";
+import { useState, useEffect } from "react";
 import Cell from "./Cell";
 
 function Game() {
@@ -10,14 +10,14 @@ function Game() {
     resetGame();
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     function checkScore(score) {
       score.forEach((row) => {
         if (row.includes("XXXX")) {
-          window.alert("X Wins!");
+          window.alert("X (Yellow) Wins!");
         }
         if (row.includes("OOOO")) {
-          window.alert("O Wins!");
+          window.alert("O (Red) Wins!");
         }
       });
     }
@@ -31,11 +31,64 @@ function Game() {
         }
         verticalGameBoard.push(verticalRow.join(""));
       }
-      return verticalGameBoard
+      return verticalGameBoard;
+    }
+    function rotateGameBoardPos45deg() {
+      const deg45 = [];
+      const rowBuffer = [];
+      for (let i = 0; i <= 10; i++) {
+        rowBuffer.push([]);
+      }
+      for (let i = 0; i <= 5; i++) {
+        for (let j = 0; j <= 10; j++) {
+          if (gameBoard[i][i + (j - 5)]) {
+            rowBuffer[j].push(gameBoard[i][i + (j - 5)]);
+          }
+        }
+      }
+      rowBuffer.forEach((row) => {
+        deg45.push(row.join(""));
+      });
+      return deg45;
+    }
+    function rotateGameBoardNeg45deg() {
+      const deg45 = [];
+      const rowBuffer = [];
+      for (let i = 0; i <= 10; i++) {
+        rowBuffer.push([]);
+      }
+
+      for (let i = 0; i <= 5; i++) {
+        for (let j = 0; j <= 5; j++) {
+          if (gameBoard[j + i]) {
+            rowBuffer[i].push(gameBoard[j + i][6 - j]);
+            rowBuffer[i + 5].push(gameBoard[j + i][4 - j]);
+          }
+        }
+      }
+
+      // for (let i = 6; i <= 10; i++) {
+      //   for (let j = 0; j <= 5; j++) {
+      //     if (gameBoard[j + (10 - i)]) {
+      //       rowBuffer[i].push(gameBoard[j + (10 - i)][4 - j]);
+      //     } else {
+      //       rowBuffer[i].push("/");
+      //     }
+      //   }
+      // }
+
+      rowBuffer.forEach((row) => {
+        deg45.push(row.join(""));
+      });
+
+      console.log(deg45);
+      return deg45;
     }
     if (gameBoard[0]) {
       checkScore(gameBoard);
       checkScore(rotateGameBorad90deg());
+      checkScore(rotateGameBoardPos45deg());
+      checkScore(rotateGameBoardNeg45deg());
     }
   }, [gameBoard]);
 
@@ -51,11 +104,8 @@ function Game() {
     for (let i = 5; i >= 0; i--) {
       if (gameBoard[i][column] === "_") {
         let row = gameBoardCopy[i].split("");
-        console.log(row);
         row[column] = player;
-        console.log(row);
         gameBoardCopy[i] = row.join("");
-        console.log(gameBoardCopy);
         setGameBoard((original) => [...gameBoardCopy]);
         changeTurn();
         break;
@@ -91,34 +141,6 @@ function Game() {
           </div>
         );
       })}
-      {/* <p>GameBoard: {gameBoard[5]}</p>
-      <p>GameBoard: {gameBoard[4]}</p>
-      <p>GameBoard: {gameBoard[3]}</p>
-      <p>GameBoard: {gameBoard[2]}</p>
-      <p>GameBoard: {gameBoard[1]}</p>
-      <p>GameBoard: {gameBoard[0]}</p>
-      <p>I am game.</p> */}
-      <button
-        onClick={() => {
-          setCoin(0, "x");
-        }}
-      >
-        Set Column 1 to X
-      </button>
-      <button
-        onClick={() => {
-          setCoin(0, "O");
-        }}
-      >
-        Set Column 1 to O
-      </button>
-      <button
-        onClick={() => {
-          console.log(gameBoard);
-        }}
-      >
-        LOGG
-      </button>
       <button onClick={resetGame}>Reset Game</button>
     </div>
   );
