@@ -1,20 +1,20 @@
 import { render, screen } from "@testing-library/react";
 import Cell from "../components/Cell";
 
-test("renders White coin in Blue Cell", () => {
+it("renders White coin in Blue Cell", () => {
   render(<Cell />);
   const coinDiv = screen.getByTestId("coin");
-  expect(coinDiv.classList.contains("bg-white")).toBe(true);
+  expect(coinDiv.classList.contains("bg-midnight")).toBe(true);
 });
 
-test("renders Yellow coin in Blue Cell", () => {
-  render(<Cell cellStatus={"Yellow"} />);
+it("renders Yellow coin in Blue Cell", () => {
+  render(<Cell cellStatus={"Y"} />);
   const coinDiv = screen.getByTestId("coin");
-  expect(coinDiv.classList.contains("bg-yellow-400")).toBe(true);
+  expect(coinDiv.classList.contains("bg-orange")).toBe(true);
 });
 
-test("renders Red coin in Blue Cell", () => {
-    render(<Cell cellStatus={"Red"} />);
+it("renders Red coin in Blue Cell", () => {
+    render(<Cell cellStatus={"R"} />);
     const coinDiv = screen.getByTestId("coin");
-    expect(coinDiv.classList.contains("bg-red-700")).toBe(true);
+    expect(coinDiv.classList.contains("bg-purple")).toBe(true);
   });
