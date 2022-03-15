@@ -22,9 +22,11 @@ function Imprint(props) {
           <div className="bg-midnight px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div
               onClick={() => props.close(false)}
-              className="text-slate-50 text-right mb-6 text-2xl"
+              className="text-center flex flex-row-reverse mb-6 text-2xl cursor-pointer"
             >
+              <div className="w-9 h-9 text-slate-50 rounded-full border-teal border">
               X
+              </div>
             </div>
             <div className="flex items-center justify-center">
               <div className="flex text-center mt-0 ml-2">
