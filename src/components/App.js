@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Game from "./Game";
 import Player from "./Player";
+import Imprint from "./Imprint";
 
 function App() {
   const [turn, setTurn] = useState("Y");
+  const [imprint, setImprint] = useState(false);
   function changeTurn() {
     if (turn === "R") setTurn(() => "Y");
     else {
@@ -11,7 +13,7 @@ function App() {
     }
   }
   return (
-    <div className="h-screen w-screen bg-center bg-cover bg-[url('./bg_connect4.svg')] grid grid-cols-1 place-content-evenly">
+    <div className="h-screen w-screen bg-center bg-cover bg-[url('./bg_connect4.svg')] grid grid-cols-1 place-content-evenly overflow-hidden">
       <div className="-rotate-6 mb-8 sm:mt-12 sm:mb-12">
         <h2 className="text-6xl sm:text-8xl text-center font-eightyone text-pink">
           React
@@ -30,6 +32,8 @@ function App() {
           <Player number="Two" color="Red" turn={turn} />
         </div>
       </div>
+      {imprint && <Imprint close={setImprint}/>}
+      <div onClick={() => setImprint(true)} className="absolute bottom-0 w-full text-slate-50 text-center">Imprint</div>
     </div>
   );
 }
