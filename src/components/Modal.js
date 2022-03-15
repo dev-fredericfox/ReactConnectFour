@@ -2,17 +2,6 @@ import { useRef, useState } from "react";
 import Coin from "./Coin";
 
 function Modal(props) {
-  const [open, setOpen] = useState(true);
-
-  const topBarColor = () => {
-    if (props.winner === "Yellow") {
-      return "bg-gradient-to-r from-orange to-sun";
-    }
-    return "bg-gradient-to-r from-red to-pink";
-  };
-
-  const cancelButtonRef = useRef(null);
-
   return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
