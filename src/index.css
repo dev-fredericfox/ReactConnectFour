@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
+@font-face {
+  font-family: "Indelible";
+  src: url("./fonts/Indelible.ttf") format("woff"),
+    url("./fonts/Indelible.ttf") format("ttf");
+}
+@font-face {
+  font-family: "Commando";
+  src: url("./fonts/commando.woff") format("woff"),
+    url("./fonts/commando.ttf") format("ttf");
+}
 @tailwind utilities;
