@@ -31,11 +31,15 @@ function App() {
         <div className="mb-12">
           <Game turn={turn} changeTurn={changeTurn} />
           <div className="flex sm:flex-row flex-col justify-center items-center mt-1">
+          <div className="flex mt-1 flex-row w-screen ml-4 sm:ml-0 sm:w-44">
             <Player number="One" color="Yellow" turn={turn} />
-            <p className="ml-6 mr-3 mt-5 sm:mt-5 font-eightyone text-6xl text-transparent bg-clip-text bg-gradient-to-br from-teal to-pink w-32">
+            </div>
+            <p className="mr-3 sm:mr-6 sm:mt-5 font-eightyone text-center text-6xl text-transparent bg-clip-text bg-gradient-to-br from-teal to-pink w-32">
               VS.
             </p>
+            <div className="flex sm:mt-1 sm:mr-0 mr-4 -mt-8 flex-row-reverse sm:flex-row w-screen sm:w-44">
             <Player number="Two" color="Red" turn={turn} />
+            </div>
           </div>
         </div>
         {imprint && <Imprint close={setImprint} />}
