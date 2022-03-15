@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import Cell from "./Cell";
+import Modal from "./Modal";
 
-function Game() {
+function Game(props) {
   const [gameBoard, setGameBoard] = useState([]);
-  const [turn, setTurn] = useState("Yellow");
+  const [winner, setWinner] = useState("");
+  const [gameLocked, setGameLocked] = useState(false);
 
   useEffect(() => {
     //Populate rows
@@ -13,11 +15,11 @@ function Game() {
   useEffect(() => {
     function checkScore(score) {
       score.forEach((row) => {
-        if (row.includes("YellowYellowYellowYellow")) {
-          window.alert("X (Yellow) Wins!");
+        if (row.includes("YYYY")) {
+          setWinner("Yellow");
         }
-        if (row.includes("RedRedRedRed")) {
-          window.alert("O (Red) Wins!");
+        if (row.includes("RRRR")) {
+          setWinner("Red");
         }
       });
     }
@@ -92,13 +94,6 @@ function Game() {
     }
   }, [gameBoard]);
 
-  function changeTurn() {
-    if (turn === "Yellow") setTurn(() => "Red");
-    else {
-      setTurn(() => "Yellow");
-    }
-  }
-
   function setCoin(column, player) {
     const gameBoardCopy = [...gameBoard];
     for (let i = 5; i >= 0; i--) {
@@ -107,7 +102,7 @@ function Game() {
         row[column] = player;
         gameBoardCopy[i] = row.join("");
         setGameBoard((original) => [...gameBoardCopy]);
-        changeTurn();
+        props.changeTurn();
         break;
       }
       // Add throwing some sort of error if col > 7 (index 6)
@@ -122,26 +117,45 @@ function Game() {
       gameBoardCopy.push(row);
     }
     setGameBoard(() => [...gameBoardCopy]);
+    setWinner("");
+    setGameLocked(false);
+  }
+  function lockGame() {
+    setWinner("");
+    setGameLocked(true);
   }
   return (
     <div>
-      {gameBoard.map((row, index) => {
-        const rowToCell = row.split("");
-        return (
-          <div className="flex" key={index}>
-            {rowToCell.map((cell, column) => (
-              <Cell
-                cellStatus={cell}
-                setCoin={setCoin}
-                column={column}
-                key={cell + "" + column}
-                turn={turn}
-              />
-            ))}
-          </div>
-        );
-      })}
-      <button onClick={resetGame}>Reset Game</button>
+      <div className="w-fit p-4 bg-midnight mx-auto">
+        <div className="bg-gradient-to-tr from-bermuda via-nova to-purple p-[1.5px] w-fit">
+          {gameBoard.map((row, index) => {
+            const rowToCell = row.split("");
+            return (
+              <div className="flex flex-grow-0" key={index}>
+                {rowToCell.map((cell, column) => (
+                  <Cell
+                    cellStatus={cell}
+                    setCoin={setCoin}
+                    gameLocked={gameLocked}
+                    column={column}
+                    key={cell + "" + column}
+                    turn={props.turn}
+                  />
+                ))}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="flex justify-center items-center">
+        <button
+          className="bg-midnight text-teal border-teal border px-4 py-2 mt-4 font-bold mb-2 text-xl"
+          onClick={resetGame}
+        >
+          Reset Game
+        </button>
+      </div>
+      {winner && <Modal winner={winner} resetGame={resetGame} lockGame={lockGame} />}
     </div>
   );
 }
