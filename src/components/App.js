@@ -13,7 +13,7 @@ function App() {
     }
   }
   return (
-    <div className="h-screen w-screen bg-center bg-cover bg-[url('./bg_connect4.svg')] grid grid-cols-1 place-content-evenly overflow-hidden">
+    <div className="h-screen w-screen bg-center bg-cover bg-[url('./bg_connect4.svg')] grid grid-cols-1 place-content-evenly">
       <div
         onClick={() => setImprint(true)}
         className="absolute top-2 left-2 bg-red rounded-full pl-2.5 pt-1 w-8 h-8 text-slate-50 text-left font-mono cursor-pointer	"
