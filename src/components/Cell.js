@@ -6,11 +6,10 @@ function Cell(props) {
       onClick={() => {
         props.setCoin(props.column, props.turn);
       }}
-      className="flex flex-row bg-blue-900 w-10 h-10"
+      className="flex flex-row bg-midnight w-11 h-11 sm:w-14 sm:h-14 m-[1.5px]"
     >
-      {!props.cellStatus && <Coin color="white" />}
-      {props.cellStatus === "Yellow" && <Coin color="yellow-400" />}
-      {props.cellStatus === "Red" && <Coin color="red-700" />}
+      {!props.cellStatus && <Coin />}
+      <Coin color={props.cellStatus} size="big" />
     </div>
   );
 }
