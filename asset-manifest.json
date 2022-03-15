@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/ReactConnectFour/static/css/main.22e32f7f.css",
-    "main.js": "/ReactConnectFour/static/js/main.55dcf33d.js",
+    "main.css": "/ReactConnectFour/static/css/main.27d8e778.css",
+    "main.js": "/ReactConnectFour/static/js/main.3eceb74a.js",
     "static/js/787.f9aae9f3.chunk.js": "/ReactConnectFour/static/js/787.f9aae9f3.chunk.js",
     "static/media/Indelible.ttf": "/ReactConnectFour/static/media/Indelible.c1b0d9a04fc1a42282e3.ttf",
     "static/media/bg_connect4.svg": "/ReactConnectFour/static/media/bg_connect4.ad72a354049559689eab.svg",
     "static/media/commando.ttf": "/ReactConnectFour/static/media/commando.68717231cfa518077a80.ttf",
     "static/media/commando.woff": "/ReactConnectFour/static/media/commando.36db86da5ccdf61887e8.woff",
     "index.html": "/ReactConnectFour/index.html",
-    "main.22e32f7f.css.map": "/ReactConnectFour/static/css/main.22e32f7f.css.map",
-    "main.55dcf33d.js.map": "/ReactConnectFour/static/js/main.55dcf33d.js.map",
+    "main.27d8e778.css.map": "/ReactConnectFour/static/css/main.27d8e778.css.map",
+    "main.3eceb74a.js.map": "/ReactConnectFour/static/js/main.3eceb74a.js.map",
     "787.f9aae9f3.chunk.js.map": "/ReactConnectFour/static/js/787.f9aae9f3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.22e32f7f.css",
-    "static/js/main.55dcf33d.js"
+    "static/css/main.27d8e778.css",
+    "static/js/main.3eceb74a.js"
   ]
 }
