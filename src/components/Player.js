@@ -27,9 +27,9 @@ function Player(props) {
   };
   return (
     <div>
-      <div className="flex mt-1 flex-row w-42">
+      <div className="flex mt-1 flex-row w-44">
         <Coin size="small" color={props.color} />
-        <div className={`text-white ml-2 text-xl ${bold()}`}>
+        <div className={`text-white ml-2 text-lg sm:text-xl ${bold()}`}>
           {props.color} Player
         </div>
         {playerTurn()}

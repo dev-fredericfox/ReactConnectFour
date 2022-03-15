@@ -149,7 +149,7 @@ function Game(props) {
       </div>
       <div className="flex justify-center items-center">
         <button
-          className="bg-midnight text-teal border-teal border px-4 py-2 mt-4 font-bold mb-2 text-xl"
+          className="bg-midnight text-teal border-teal border px-4 py-2 mt-2 sm:mt-4 font-bold mb-2 sm:text-xl"
           onClick={resetGame}
         >
           Reset Game
