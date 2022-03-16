@@ -19,7 +19,7 @@ function Imprint(props) {
           &#8203;
         </span>
         <div className="relative inline-block border border-teal align-bottom text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-          <div className="bg-midnight h-[90vh] overflow-scroll px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div className="bg-midnight h-[85vh] overflow-scroll px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div
               onClick={() => props.close(false)}
               className="text-center flex flex-row-reverse mb-6 text-2xl cursor-pointer"
@@ -53,7 +53,7 @@ function Imprint(props) {
               >
                 Datenschutz
               </h3>
-              <div className="grid grid-cols-1 text-slate-50 text-justify mt-0 ml-2">
+              <div className="grid grid-cols-1 text-slate-50 text-justify mt-0 mb-2 mx-2">
                 <h1>Datenschutz&shy;erkl&auml;rung</h1>
                 <h2>1. Datenschutz auf einen Blick</h2>
                 <h3>Allgemeine Hinweise</h3>
