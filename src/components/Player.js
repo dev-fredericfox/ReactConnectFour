@@ -20,7 +20,7 @@ function Player(props) {
       props.color.includes("Red")
     ) {
       return (
-        <div className="absolute -rotate-[142deg] mr-7 font-eightyone text-8xl text-transparent bg-clip-text bg-gradient-to-br from-pink to-nova w-[90px] h-[70px]">
+        <div className="absolute rotate-[32deg] mr-7 font-eightyone text-8xl text-transparent bg-clip-text bg-gradient-to-br from-pink to-nova w-[90px] h-[70px]">
           1
         </div>
       );
@@ -29,7 +29,7 @@ function Player(props) {
   return (
     <Fragment>
       <Coin size="small" color={props.color} />
-      <div className={`text-white ml-2 mr-2 text-lg sm:text-xl ${bold()}`}>
+      <div className={`text-white ml-1 mr-1 text-lg sm:text-xl ${bold()}`}>
         {props.color} Player
       </div>
       {playerTurn()}
