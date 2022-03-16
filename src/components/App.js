@@ -13,14 +13,14 @@ function App() {
     }
   }
   return (
-    <div className="h-screen w-screen bg-center bg-cover bg-[url('./bg_connect4.svg')] grid grid-cols-1 place-content-evenly">
+    <div className="sm:h-screen w-screen grid grid-cols-1 place-content-evenly">
       <div
         onClick={() => setImprint(true)}
         className="absolute top-2 left-2 bg-red rounded-full pl-2.5 pt-1 w-8 h-8 text-slate-50 text-left font-mono cursor-pointer	"
       >
         i
       </div>
-      <div className="-rotate-6 mb-0 sm:mt-12 sm:mb-12">
+      <div className="-rotate-6 mb-0 mt-12 h-44 sm:mt-12 sm:mb-12">
         <h2 className="text-6xl sm:text-8xl text-center font-eightyone text-pink">
           React
         </h2>
