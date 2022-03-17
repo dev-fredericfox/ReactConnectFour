@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Cell from "./Cell";
 import Modal from "./Modal";
 
-function Game(props) {
+function Game({turn, changeTurn}) {
   const [gameBoard, setGameBoard] = useState([]);
   const [winner, setWinner] = useState("");
   const [gameLocked, setGameLocked] = useState(false);
@@ -69,16 +69,6 @@ function Game(props) {
         }
       }
 
-      // for (let i = 6; i <= 10; i++) {
-      //   for (let j = 0; j <= 5; j++) {
-      //     if (gameBoard[j + (10 - i)]) {
-      //       rowBuffer[i].push(gameBoard[j + (10 - i)][4 - j]);
-      //     } else {
-      //       rowBuffer[i].push("/");
-      //     }
-      //   }
-      // }
-
       rowBuffer.forEach((row) => {
         deg45.push(row.join(""));
       });
@@ -102,10 +92,9 @@ function Game(props) {
         row[column] = player;
         gameBoardCopy[i] = row.join("");
         setGameBoard((original) => [...gameBoardCopy]);
-        props.changeTurn();
+        changeTurn();
         break;
       }
-      // Add throwing some sort of error if col > 7 (index 6)
     }
   }
 
@@ -139,7 +128,7 @@ function Game(props) {
                     gameLocked={gameLocked}
                     column={column}
                     key={cell + "" + column}
-                    turn={props.turn}
+                    turn={turn}
                   />
                 ))}
               </div>
@@ -155,7 +144,9 @@ function Game(props) {
           Reset Game
         </button>
       </div>
-      {winner && <Modal winner={winner} resetGame={resetGame} lockGame={lockGame} />}
+      {winner && (
+        <Modal winner={winner} resetGame={resetGame} lockGame={lockGame} />
+      )}
     </div>
   );
 }
