@@ -1,7 +1,6 @@
-import { useRef, useState } from "react";
 import Coin from "./Coin";
 
-function Modal(props) {
+function Modal({ winner, resetGame }) {
   return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
@@ -27,14 +26,14 @@ function Modal(props) {
             <div className="flex items-center justify-center">
               <div className="flex items-center justify-center rounded-full bg-red-100 mx-0 h-10 w-10">
                 {/* <div className={`rounded-full ${topBarColor()} h-6 w-6`}></div> */}
-                <Coin size="small" color={props.winner} />
+                <Coin size="small" color={winner} />
               </div>
               <div className="flex text-center mt-0 ml-2">
                 <h3
                   className="text-xl leading-6 font-medium text-slate-50"
                   id="modal-title"
                 >
-                  {props.winner} Player Wins!
+                  {winner} Player Wins!
                 </h3>
               </div>
             </div>
@@ -42,7 +41,7 @@ function Modal(props) {
           <div className="bg-midnight px-4 py-3 sm:px-6 flex items-center justify-center">
             <button
               onClick={() => {
-                props.resetGame();
+                resetGame();
               }}
               type="button"
               className="bg-emerald-200  hover:bg-emerald-300  text-midnight px-4 py-2 mt-4 font-bold mb-2 text-xl"

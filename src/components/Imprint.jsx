@@ -1,4 +1,4 @@
-function Imprint(props) {
+function Imprint({close}) {
   return (
     <div
       className="fixed z-10 inset-0 overflow-y-auto"
@@ -8,7 +8,7 @@ function Imprint(props) {
     >
       <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div
-          onClick={() => props.close(false)}
+          onClick={() => close(false)}
           className="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity"
           aria-hidden="true"
         ></div>
@@ -21,7 +21,7 @@ function Imprint(props) {
         <div className="relative inline-block border border-teal align-bottom text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
           <div className="bg-midnight h-[85vh] overflow-scroll px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div
-              onClick={() => props.close(false)}
+              onClick={() => close(false)}
               className="text-center flex flex-row-reverse mb-6 text-2xl cursor-pointer"
             >
               <div className="w-9 h-9 text-slate-50 rounded-full border-teal border">
