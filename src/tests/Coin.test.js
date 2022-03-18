@@ -1,21 +1,16 @@
 import { render, screen } from "@testing-library/react";
 import Coin from "../components/Coin";
 
-it("renders white coin", () => {
-  render(<Coin color="white" />);
-  const coinDiv = screen.getByTestId("coin");
-  expect(coinDiv.classList.contains("bg-white")).toBe(true);
+
+it("renders big yellow coin", () => {
+  render(<Coin color="Red" size="big" />);
+  const coinDiv = screen.getByTestId("big-coin");
+  expect(coinDiv.classList.contains("bg-gradient-to-br" && "from-red" && "to-pink")).toBe(true);
 });
 
-it("renders fallback coin", () => {
-  render(<Coin />);
-  const coinDiv = screen.getByTestId("coin");
-  expect(coinDiv.classList.contains("bg-midnight")).toBe(true);
-});
-
-it("renders custom color coin", () => {
-  render(<Coin color="orange" />);
-  const coinDiv = screen.getByTestId("coin");
-  expect(coinDiv.classList.contains("bg-orange")).toBe(true);
+it("renders small red coin", () => {
+  render(<Coin color="Yellow" size="small" />);
+  const coinDiv = screen.getByTestId("small-coin");
+  expect(coinDiv.classList.contains("bg-gradient-to-br" && "from-nova" && "to-sun")).toBe(true);
 });
 
