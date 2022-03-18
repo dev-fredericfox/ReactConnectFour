@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Cell from "./Cell";
 import Modal from "./Modal";
 
-function Game({turn, changeTurn}) {
+function Game({ turn, changeTurn }) {
   const [gameBoard, setGameBoard] = useState([]);
   const [winner, setWinner] = useState("");
   const [gameLocked, setGameLocked] = useState(false);
@@ -73,7 +73,7 @@ function Game({turn, changeTurn}) {
         deg45.push(row.join(""));
       });
 
-      console.log(deg45);
+      // console.log(deg45);
       return deg45;
     }
     if (gameBoard[0]) {
@@ -138,6 +138,7 @@ function Game({turn, changeTurn}) {
       </div>
       <div className="flex justify-center items-center">
         <button
+          data-testid="reset-button"
           className="bg-midnight text-teal border-teal border px-4 py-2 mt-2 sm:mt-4 font-bold mb-2 sm:text-xl"
           onClick={resetGame}
         >
